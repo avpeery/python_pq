@@ -2,6 +2,9 @@ class Item:
     def __init__(self, val, priority):
         self.val = val
         self.priority = priority
+    
+    def __lt__(self, other):
+        return self.priority < other.priority
 
     def __repr__(self):
         return "Item(val: {}, pri: {})".format(self.val,
@@ -16,15 +19,12 @@ class PriorityQueue:
     def __str__(self):
         return "[" + ", ".join([str(item) for item in self.storage]) + "]"
 
-    def standard_priority_func(self, p1, p2):
-        return p1 < p2
-
     def insert(self, val, priority):
         to_insert = Item(val, priority)
 
         insert_index = 0
         while insert_index < len(self.storage):
-            if self.standard_priority_func(self.storage[insert_index].priority, priority):
+            if self.storage[insert_index] < to_insert:
                 break
             insert_index += 1
 
