@@ -20,7 +20,7 @@ class PriorityQueue:
         self.storage = []
 
     def __str__(self):
-        return "[" + ", ".join([str(item) for item in self.storage]) + "]"
+        return "The first item in this list is", self.storage[0].item, ". There are ", len(self.storage), "items in this list."
 
     def insert(self, val, priority):
         to_insert = Item(val, priority)
